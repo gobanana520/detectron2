@@ -232,8 +232,7 @@ class Boxes:
         """
         if isinstance(item, int):
             return Boxes(self.tensor[item].view(1, -1))
-        # b = self.tensor[item]
-        b = self.tensor[item.to(self.tensor.device())]
+        b = self.tensor[item.to(self.tensor.device)]
         assert b.dim() == 2, "Indexing on Boxes with {} failed to return a matrix!".format(item)
         return Boxes(b)
 
